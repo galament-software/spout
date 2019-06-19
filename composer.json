@@ -9,6 +9,10 @@
         {
             "name": "Adrien Loison",
             "email": "adrien@box.com"
+        },
+        {
+            "name": "Alexander Obukhov",
+            "email": "casperW87@gmail.com"
         }
     ],
     "require": {

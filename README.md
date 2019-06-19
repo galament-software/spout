@@ -17,6 +17,10 @@ Join the community and come discuss about Spout: [![Gitter](https://badges.gitte
 
 Full documentation can be found at [http://opensource.box.com/spout/](http://opensource.box.com/spout/).
 
+This is a fork. Added functionality:
+
+- alignment styles
+- cells merging
 
 ## Requirements
 
