@@ -22,6 +22,14 @@ This is a fork. Added functionality:
 - alignment styles
 - cells merging
 
+Examples:
+
+~~~~
+$writer->addMergeCells(new CellsRange(1, 1, 1, 2)
+~~~~
+
+CellsRange accepts 4 int params: x1, y1, x2, y2 - coordinates of left top cell (x1, y1) and right bottom cell (x2, y2) of merged area.
+
 ## Requirements
 
 * PHP version 7.1 or higher
