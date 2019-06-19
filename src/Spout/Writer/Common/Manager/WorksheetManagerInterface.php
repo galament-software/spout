@@ -2,6 +2,7 @@
 
 namespace Box\Spout\Writer\Common\Manager;
 
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Writer\Common\Entity\Worksheet;
 
@@ -38,4 +39,12 @@ interface WorksheetManagerInterface
      * @return void
      */
     public function close(Worksheet $worksheet);
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range);
 }

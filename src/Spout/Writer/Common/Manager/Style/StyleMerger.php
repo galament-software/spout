@@ -91,5 +91,11 @@ class StyleMerger
         if (!$style->shouldApplyBackgroundColor() && $baseStyle->shouldApplyBackgroundColor()) {
             $styleToUpdate->setBackgroundColor($baseStyle->getBackgroundColor());
         }
+        if (!$style->shouldAlignHorizontally() && $baseStyle->shouldAlignHorizontally()) {
+            $styleToUpdate->alignHorizontally();
+        }
+        if (!$style->shouldAlignVertically() && $baseStyle->shouldAlignVertically()) {
+            $styleToUpdate->alignVertically();
+        }
     }
 }

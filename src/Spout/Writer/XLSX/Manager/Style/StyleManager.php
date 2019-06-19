@@ -215,9 +215,19 @@ EOD;
 
             $content .= sprintf(' applyBorder="%d"', $style->shouldApplyBorder() ? 1 : 0);
 
-            if ($style->shouldWrapText()) {
+            if ($style->shouldWrapText() || $style->shouldAlignHorizontally() || $style->shouldAlignVertically()) {
                 $content .= ' applyAlignment="1">';
-                $content .= '<alignment wrapText="1"/>';
+                $content .= '<alignment';
+                if ($style->shouldWrapText()) {
+                    $content .= ' wrapText="1"';
+                }
+                if ($style->shouldAlignHorizontally()) {
+                    $content .= ' horizontal="center"';
+                }
+                if ($style->shouldAlignVertically()) {
+                    $content .= ' vertical="center"';
+                }
+                $content .= '/>';
                 $content .= '</xf>';
             } else {
                 $content .= '/>';

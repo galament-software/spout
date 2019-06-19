@@ -2,6 +2,7 @@
 
 namespace Box\Spout\Writer\Common\Manager;
 
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Common\Manager\OptionsManagerInterface;
@@ -232,6 +233,17 @@ abstract class WorkbookManagerAbstract implements WorkbookManagerInterface
         } else {
             $this->addRowToWorksheet($currentWorksheet, $row);
         }
+    }
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range)
+    {
+        return $this->worksheetManager->addMergeCells($range);
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace Box\Spout\Writer;
 
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Entity\Style\Style;
 
@@ -60,6 +61,14 @@ interface WriterInterface
      * @return WriterInterface
      */
     public function addRows(array $rows);
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range);
 
     /**
      * Closes the writer. This will close the streamer as well, preventing new data

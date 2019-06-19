@@ -9,9 +9,9 @@ namespace Box\Spout\Common\Entity\Style;
 class Style
 {
     /** Default font values */
-    const DEFAULT_FONT_SIZE = 11;
+    const DEFAULT_FONT_SIZE  = 11;
     const DEFAULT_FONT_COLOR = Color::BLACK;
-    const DEFAULT_FONT_NAME = 'Arial';
+    const DEFAULT_FONT_NAME  = 'Arial';
 
     /** @var int|null Style ID */
     private $id;
@@ -59,6 +59,9 @@ class Style
     /** @var bool Whether the wrap text property was set */
     private $hasSetWrapText = false;
 
+    private $shouldAlignVertically   = false;
+    private $shouldAlignHorizontally = false;
+
     /** @var Border */
     private $border;
 
@@ -105,7 +108,7 @@ class Style
     public function setBorder(Border $border)
     {
         $this->shouldApplyBorder = true;
-        $this->border = $border;
+        $this->border            = $border;
 
         return $this;
     }
@@ -131,8 +134,8 @@ class Style
      */
     public function setFontBold()
     {
-        $this->fontBold = true;
-        $this->hasSetFontBold = true;
+        $this->fontBold        = true;
+        $this->hasSetFontBold  = true;
         $this->shouldApplyFont = true;
 
         return $this;
@@ -159,9 +162,9 @@ class Style
      */
     public function setFontItalic()
     {
-        $this->fontItalic = true;
+        $this->fontItalic       = true;
         $this->hasSetFontItalic = true;
-        $this->shouldApplyFont = true;
+        $this->shouldApplyFont  = true;
 
         return $this;
     }
@@ -187,9 +190,9 @@ class Style
      */
     public function setFontUnderline()
     {
-        $this->fontUnderline = true;
+        $this->fontUnderline       = true;
         $this->hasSetFontUnderline = true;
-        $this->shouldApplyFont = true;
+        $this->shouldApplyFont     = true;
 
         return $this;
     }
@@ -215,9 +218,9 @@ class Style
      */
     public function setFontStrikethrough()
     {
-        $this->fontStrikethrough = true;
+        $this->fontStrikethrough       = true;
         $this->hasSetFontStrikethrough = true;
-        $this->shouldApplyFont = true;
+        $this->shouldApplyFont         = true;
 
         return $this;
     }
@@ -244,8 +247,8 @@ class Style
      */
     public function setFontSize($fontSize)
     {
-        $this->fontSize = $fontSize;
-        $this->hasSetFontSize = true;
+        $this->fontSize        = $fontSize;
+        $this->hasSetFontSize  = true;
         $this->shouldApplyFont = true;
 
         return $this;
@@ -275,7 +278,7 @@ class Style
      */
     public function setFontColor($fontColor)
     {
-        $this->fontColor = $fontColor;
+        $this->fontColor       = $fontColor;
         $this->hasSetFontColor = true;
         $this->shouldApplyFont = true;
 
@@ -304,8 +307,8 @@ class Style
      */
     public function setFontName($fontName)
     {
-        $this->fontName = $fontName;
-        $this->hasSetFontName = true;
+        $this->fontName        = $fontName;
+        $this->hasSetFontName  = true;
         $this->shouldApplyFont = true;
 
         return $this;
@@ -363,7 +366,7 @@ class Style
     public function setBackgroundColor($color)
     {
         $this->hasSetBackgroundColor = true;
-        $this->backgroundColor = $color;
+        $this->backgroundColor       = $color;
 
         return $this;
     }
@@ -382,5 +385,25 @@ class Style
     public function shouldApplyBackgroundColor()
     {
         return $this->hasSetBackgroundColor;
+    }
+
+    public function alignHorizontally()
+    {
+        $this->shouldAlignHorizontally = true;
+    }
+
+    public function alignVertically()
+    {
+        $this->shouldAlignVertically = true;
+    }
+
+    public function shouldAlignHorizontally()
+    {
+        return $this->shouldAlignHorizontally;
+    }
+
+    public function shouldAlignVertically(): bool
+    {
+        return $this->shouldAlignVertically;
     }
 }

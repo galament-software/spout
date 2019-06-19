@@ -3,6 +3,7 @@
 namespace Box\Spout\Writer\ODS\Manager;
 
 use Box\Spout\Common\Entity\Cell;
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Entity\Style\Style;
 use Box\Spout\Common\Exception\InvalidArgumentException;
@@ -142,6 +143,17 @@ class WorksheetManager implements WorksheetManagerInterface
         // only update the count if the write worked
         $lastWrittenRowIndex = $worksheet->getLastWrittenRowIndex();
         $worksheet->setLastWrittenRowIndex($lastWrittenRowIndex + 1);
+    }
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range)
+    {
+        return true;
     }
 
     /**
