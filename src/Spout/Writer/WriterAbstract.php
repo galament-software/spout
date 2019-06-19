@@ -3,6 +3,7 @@
 namespace Box\Spout\Writer;
 
 use Box\Spout\Common\Creator\HelperFactory;
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Entity\Style\Style;
 use Box\Spout\Common\Exception\InvalidArgumentException;
@@ -210,6 +211,17 @@ abstract class WriterAbstract implements WriterInterface
         }
 
         return $this;
+    }
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range)
+    {
+        return true;
     }
 
     /**

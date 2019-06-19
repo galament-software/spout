@@ -3,6 +3,7 @@
 namespace Box\Spout\Writer\XLSX\Manager;
 
 use Box\Spout\Common\Entity\Cell;
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Entity\Style\Style;
 use Box\Spout\Common\Exception\InvalidArgumentException;
@@ -61,6 +62,8 @@ EOD;
 
     /** @var InternalEntityFactory Factory to create entities */
     private $entityFactory;
+
+    private $mergeCells = [];
 
     /**
      * WorksheetManager constructor.
@@ -140,6 +143,12 @@ EOD;
         }
 
         $worksheet->setLastWrittenRowIndex($worksheet->getLastWrittenRowIndex() + 1);
+    }
+
+    public function addMergeCells(CellsRange $range)
+    {
+        $mergeCellsXML = '<mergeCell ref="' . $range->getRange() . '" />';
+        $this->mergeCells[] = $mergeCellsXML;
     }
 
     /**
@@ -268,6 +277,15 @@ EOD;
         }
 
         fwrite($worksheetFilePointer, '</sheetData>');
+        if (count($this->mergeCells) > 0) {
+            fwrite($worksheetFilePointer, '<mergeCells count="' . count($this->mergeCells) . '">');
+        }
+        foreach ($this->mergeCells as $mergeCell) {
+            fwrite($worksheetFilePointer, $mergeCell);
+        }
+        if (count($this->mergeCells) > 0) {
+            fwrite($worksheetFilePointer, '</mergeCells>');
+        }
         fwrite($worksheetFilePointer, '</worksheet>');
         fclose($worksheetFilePointer);
     }

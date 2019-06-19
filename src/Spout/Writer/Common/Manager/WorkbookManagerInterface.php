@@ -2,6 +2,7 @@
 
 namespace Box\Spout\Writer\Common\Manager;
 
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Exception\IOException;
 use Box\Spout\Writer\Common\Entity\Sheet;
@@ -63,6 +64,14 @@ interface WorkbookManagerInterface
      * @return void
      */
     public function addRowToCurrentWorksheet(Row $row);
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range);
 
     /**
      * Closes the workbook and all its associated sheets.

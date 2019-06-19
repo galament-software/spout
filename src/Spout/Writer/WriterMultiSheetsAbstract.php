@@ -3,6 +3,7 @@
 namespace Box\Spout\Writer;
 
 use Box\Spout\Common\Creator\HelperFactory;
+use Box\Spout\Common\Entity\CellsRange;
 use Box\Spout\Common\Entity\Row;
 use Box\Spout\Common\Helper\GlobalFunctionsHelper;
 use Box\Spout\Common\Manager\OptionsManagerInterface;
@@ -155,6 +156,17 @@ abstract class WriterMultiSheetsAbstract extends WriterAbstract
     {
         $this->throwIfWorkbookIsNotAvailable();
         $this->workbookManager->addRowToCurrentWorksheet($row);
+    }
+
+    /**
+     * Adds merge cells to the worksheet
+     *
+     * @param CellsRange $range
+     * @return mixed
+     */
+    public function addMergeCells(CellsRange $range)
+    {
+        return $this->workbookManager->addMergeCells($range);
     }
 
     /**

@@ -148,6 +148,20 @@ class StyleBuilder
         return $this;
     }
 
+    public function alignHorizontally()
+    {
+        $this->style->alignHorizontally();
+
+        return $this;
+    }
+
+    public function alignVertically()
+    {
+        $this->style->alignVertically();
+
+        return $this;
+    }
+
     /**
      * Returns the configured style. The style is cached and can be reused.
      *
