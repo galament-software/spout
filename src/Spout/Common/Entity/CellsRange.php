@@ -2,6 +2,8 @@
 
 namespace Box\Spout\Common\Entity;
 
+use Box\Spout\Writer\Common\Helper\CellHelper;
+
 class CellsRange
 {
     const ALPHABET_LETTERS_COUNT = 26;
@@ -10,11 +12,6 @@ class CellsRange
     private $yCell1;
     private $xCell2;
     private $yCell2;
-
-    private $alphabet = [
-        'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
-        'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
-    ];
 
     public function __construct(int $xCell1, int $yCell1, int $xCell2, int $yCell2)
     {
@@ -26,25 +23,7 @@ class CellsRange
 
     public function getRange(): string
     {
-        return $this->getXCoord($this->xCell1) . $this->yCell1 . ':' . $this->getXCoord($this->xCell2) . $this->yCell2;
-    }
-
-    private function getXCoord(int $x): string
-    {
-        $x--;
-        $lettersCount = floor(log($x, self::ALPHABET_LETTERS_COUNT)) + 1;
-        $xCoord       = '';
-        $rest         = $x;
-        $curLetterPos = $x;
-
-        for ($i = $lettersCount; $i > 1; $i--) {
-            $closestNumber = pow(self::ALPHABET_LETTERS_COUNT, ($i - 1));
-            $curLetterPos  = (int)$rest / $closestNumber;
-            $xCoord        .= $this->alphabet[$curLetterPos];
-            $rest          = $rest - $closestNumber;
-        }
-        $xCoord .= $this->alphabet[$curLetterPos];
-
-        return $xCoord;
+        return CellHelper::getCellIndexFromColumnIndex($this->xCell1 - 1) . $this->yCell1 . ':' .
+               CellHelper::getCellIndexFromColumnIndex($this->xCell2 - 1) . $this->yCell2;
     }
 }
